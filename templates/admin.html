@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin - Casos</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Casos Registrados</h1>
+    <ul>
+        {% for r in registros %}
+            <li><a href="{{ url_for('ver', filename=r) }}">{{ r }}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+

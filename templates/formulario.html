@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulario de Soporte</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <img src="/static/logo.png" alt="Logo" class="logo">
+    <h1>Reporte un Caso</h1>
+    <form method="post" enctype="multipart/form-data">
+        <label>Nombre:</label><input name="nombre" required><br>
+        <label>Correo:</label><input name="correo" required><br>
+        <label>Teléfono:</label><input name="telefono"><br>
+        <label>Seleccione Cliente:</label>
+        <select name="empresa" required>
+            {% for empresa in empresas %}
+                <option>{{ empresa }}</option>
+            {% endfor %}
+        </select><br>
+        <label>Tipo:</label>
+        <select name="tipo_problema" required>
+            {% for tipo in tipos_problema %}
+                <option>{{ tipo }}</option>
+            {% endfor %}
+        </select><br>
+        <label>Descripción:</label><textarea name="descripcion" required></textarea><br>
+        <label>Archivo:</label><input type="file" name="archivo"><br>
+        <button type="submit">Enviar</button>
+    </form>
+</body>
+</html>
