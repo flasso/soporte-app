@@ -1,16 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Admin - Casos</title>
+    <meta charset="UTF-8">
+    <title>Panel de Administración</title>
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <h1>Casos Registrados</h1>
-    <ul>
-        {% for r in registros %}
-            <li><a href="{{ url_for('ver', filename=r) }}">{{ r }}</a></li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <img src="/static/logo.png" alt="Logo" class="logo">
+        <h1>Panel de Administración</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Empresa</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for incidente in incidentes %}
+                <tr>
+                    <td>{{ incidente.id }}</td>
+                    <td>{{ incidente.nombre }}</td>
+                    <td>{{ incidente.empresa }}</td>
+                    <td>{{ incidente.estado }}</td>
+                    <td><a href="/responder/{{ incidente.id }}">Responder</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
-
