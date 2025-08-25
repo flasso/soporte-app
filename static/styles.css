@@ -1,26 +1,118 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 40px;
-    background: #f9f9f9;
-}
-.logo {
-    width: 200px;
-}
-form {
-    background: white;
+    background-color: #f2f2f2;
     padding: 20px;
-    border-radius: 8px;
+    margin: 0;
 }
-label {
+
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #0c2340;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form label {
     display: block;
-    margin-top: 10px;
-}
-input, select, textarea {
-    width: 100%;
-    padding: 8px;
-    margin-top: 4px;
-}
-button {
     margin-top: 15px;
+    font-weight: bold;
+    color: #333;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="tel"],
+form select,
+form textarea,
+form input[type="file"] {
+    width: 100%;
     padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    background-color: #0c2340;
+    color: white;
+    padding: 12px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #174a7c;
+}
+
+.logo {
+    max-width: 180px;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+a.volver {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #0c2340;
+    font-weight: bold;
+}
+
+a.volver:hover {
+    text-decoration: underline;
+}
+
+.detalle-incidente p {
+    margin: 8px 0;
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+.detalle-incidente a {
+    color: #0c2340;
+    text-decoration: none;
+}
+
+.detalle-incidente a:hover {
+    text-decoration: underline;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #0c2340;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
 }
