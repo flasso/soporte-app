@@ -1,36 +1,62 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Panel de Administración</title>
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <div class="container">
-        <img src="/static/logo.png" alt="Logo" class="logo">
-        <h1>Panel de Administración</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Empresa</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for incidente in incidentes %}
-                <tr>
-                    <td>{{ incidente.id }}</td>
-                    <td>{{ incidente.nombre }}</td>
-                    <td>{{ incidente.empresa }}</td>
-                    <td>{{ incidente.estado }}</td>
-                    <td><a href="/responder/{{ incidente.id }}">Responder</a></td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+    <h1>Panel de Administración</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Teléfono</th>
+            <th>Empresa</th>
+            <th>Tipo de Caso</th>
+            <th>Descripción</th>
+            <th>Archivo Cliente</th>
+            <th>Respuesta</th>
+            <th>Archivo Respuesta</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+        {% for i in incidentes %}
+        <tr>
+            <td>{{ i['id'] }}</td>
+            <td>{{ i['fecha'] }}</td>
+            <td>{{ i['nombre'] }}</td>
+            <td>{{ i['correo'] }}</td>
+            <td>{{ i['telefono'] }}</td>
+            <td>{{ i['empresa'] }}</td>
+            <td>{{ i['tipo_problema'] }}</td>
+            <td>{{ i['descripcion'] }}</td>
+            <td>
+                {% if i['archivo'] %}
+                    <a href="{{ url_for('uploaded_file', filename=i['archivo']) }}" target="_blank">Ver</a>
+                {% else %}
+                    -
+                {% endif %}
+            </td>
+            <td>{{ i['respuesta'] or '-' }}</td>
+            <td>
+                {% if i['archivo_respuesta'] %}
+                    <a href="{{ url_for('uploaded_file', filename=i['archivo_respuesta']) }}" target="_blank">Ver</a>
+                {% else %}
+                    -
+                {% endif %}
+            </td>
+            <td>{{ i['estado'] }}</td>
+            <td>
+                {% if i['estado'] != 'Cerrado' %}
+                    <a href="{{ url_for('responder', id=i['id']) }}">Responder</a>
+                {% else %}
+                    Cerrado
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
 </body>
 </html>

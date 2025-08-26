@@ -1,47 +1,21 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Responder Incidente</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Responder Caso</title>
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <div class="container">
-        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" class="logo">
-        <h1>Responder Incidente</h1>
+    <h1>Responder Caso</h1>
+    <form method="post" enctype="multipart/form-data">
+        <label for="respuesta">Respuesta:</label><br>
+        <textarea name="respuesta" rows="6" cols="60" required></textarea><br><br>
 
-        {% if incidente %}
-            <div class="detalle-incidente">
-                <p><strong>Nombre:</strong> {{ incidente.nombre }}</p>
-                <p><strong>Correo:</strong> {{ incidente.correo }}</p>
-                <p><strong>Teléfono:</strong> {{ incidente.telefono }}</p>
-                <p><strong>Empresa:</strong> {{ incidente.empresa }}</p>
-                <p><strong>Tipo de Caso:</strong> {{ incidente.tipo_problema }}</p>
-                <p><strong>Descripción:</strong> {{ incidente.descripcion }}</p>
-                {% if incidente.archivo %}
-                    <p><strong>Archivo enviado:</strong>
-                        <a href="{{ url_for('static', filename='uploads/' ~ incidente.archivo) }}" target="_blank">Ver archivo</a>
-                    </p>
-                {% endif %}
-                <p><strong>Fecha de reporte:</strong> {{ incidente.fecha_reporte }}</p>
-                <p><strong>Estado actual:</strong> {{ incidente.estado }}</p>
-            </div>
+        <label for="archivo_respuesta">Archivo Adjunto (opcional):</label><br>
+        <input type="file" name="archivo_respuesta"><br><br>
 
-            <form method="post" enctype="multipart/form-data">
-                <label for="respuesta">Respuesta:</label>
-                <textarea name="respuesta" id="respuesta" required></textarea>
-
-                <label for="archivo_respuesta">Adjuntar archivo (opcional):</label>
-                <input type="file" name="archivo_respuesta" id="archivo_respuesta">
-
-                <button type="submit">Enviar Respuesta</button>
-            </form>
-        {% else %}
-            <p>No se encontró el incidente.</p>
-        {% endif %}
-
-        <br>
-        <a href="{{ url_for('admin') }}" class="volver">Volver al panel</a>
-    </div>
+        <button type="submit">Enviar Respuesta</button>
+    </form>
+    <br>
+    <a href="/admin">Volver al Panel</a>
 </body>
 </html>
